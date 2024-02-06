@@ -167,6 +167,7 @@ const Dashboard = () => {
         {currentWeather && (
           <div className="humidity">
             <h1>{currentWeather.humidity}%</h1>
+            <p>Humidity</p>
           </div>
         )}
 

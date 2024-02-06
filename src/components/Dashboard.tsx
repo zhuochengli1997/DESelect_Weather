@@ -162,123 +162,124 @@ const Dashboard = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      {!show && (
+        <div className="dashboard">
+          {currentWeather && (
+            <div className="humidity">
+              <h1>{currentWeather.humidity}%</h1>
+              <p>Humidity</p>
+            </div>
+          )}
 
-      <div className="dashboard">
-        {currentWeather && (
-          <div className="humidity">
-            <h1>{currentWeather.humidity}%</h1>
-            <p>Humidity</p>
+          <div className="title-card">
+            <button
+              className="opensearch"
+              onClick={handleShow}
+              style={{
+                position: "absolute",
+                top: "0",
+                right: "0",
+                margin: "20px",
+                backgroundImage: `url(${SearchIcon})`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "100%",
+                backgroundPosition: "center",
+                backgroundColor: "transparent",
+                width: "40px",
+                height: "40px",
+                border: "none",
+                cursor: "pointer",
+              }}
+            />
+            <h1>{city}</h1>
+            <p>{formattedDate}</p>
           </div>
-        )}
 
-        <div className="title-card">
-          <button
-            className="opensearch"
-            onClick={handleShow}
-            style={{
-              position: "absolute",
-              top: "0",
-              right: "0",
-              margin: "20px",
-              backgroundImage: `url(${SearchIcon})`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "100%",
-              backgroundPosition: "center",
-              backgroundColor: "transparent",
-              width: "40px",
-              height: "40px",
-              border: "none",
-              cursor: "pointer",
-            }}
-          />
-          <h1>{city}</h1>
-          <p>{formattedDate}</p>
-        </div>
-
-        <div
-          className="wind-speed"
-          style={{
-            backgroundImage: `url(${Windmill})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "70%",
-            backgroundPositionX: "100%",
-            backgroundPositionY: "105%",
-          }}
-        >
-          <h2>{currentWeather?.windSpeed} KM/h</h2>
-          <p>{currentWeather?.describtion}</p>
-        </div>
-
-        <div className="forecast">
-          <table>
-            <thead>
-              <tr>
-                <th>Day</th>
-                <th>&deg;C</th>
-                <th>Sun Hours</th>
-              </tr>
-            </thead>
-            <tbody>
-              {weeklyData.map((day) => (
-                <tr key={day.date}>
-                  <td>{day.dayOfWeek}</td>
-                  <td>{day.temperature}</td>
-                  <td>{day.humidity}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div
-          className="today-temp"
-          style={{
-            backgroundImage: `url(${CloudIcon})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "25%",
-            backgroundPositionX: "90%",
-            backgroundPositionY: "10%",
-          }}
-        >
-          <h1>{currentWeather?.temperature}&deg;C</h1>
-        </div>
-
-        <div
-          className="uv-index"
-          style={{
-            backgroundImage: `url(${UVIcon})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "80%",
-            backgroundPositionX: "90px",
-            backgroundPositionY: "40px",
-          }}
-        >
-          <p>UV Index</p>
-          <h1>{currentWeather?.uvIndex}</h1>
-        </div>
-
-        <div className="today-detail">
           <div
-            className="sun-rise"
+            className="wind-speed"
             style={{
-              backgroundImage: `url(${SunRise})`,
+              backgroundImage: `url(${Windmill})`,
               backgroundRepeat: "no-repeat",
-              backgroundSize: "90%",
-              backgroundPositionX: "-100%",
-              backgroundPositionY: "108%",
+              backgroundSize: "70%",
+              backgroundPositionX: "100%",
+              backgroundPositionY: "105%",
             }}
           >
-            <h3>Sun Rise</h3>
-            <h2>{currentWeather?.observationTime}</h2>
+            <h2>{currentWeather?.windSpeed} KM/h</h2>
+            <p>{currentWeather?.describtion}</p>
           </div>
-          <div className="timed-temp">
-            <h2>Hourly Temperature</h2>
-            <div className="chart-box">
-              <LineChart city={city} />
+
+          <div className="forecast">
+            <table>
+              <thead>
+                <tr>
+                  <th>Day</th>
+                  <th>&deg;C</th>
+                  <th>Sun Hours</th>
+                </tr>
+              </thead>
+              <tbody>
+                {weeklyData.map((day) => (
+                  <tr key={day.date}>
+                    <td>{day.dayOfWeek}</td>
+                    <td>{day.temperature}</td>
+                    <td>{day.humidity}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div
+            className="today-temp"
+            style={{
+              backgroundImage: `url(${CloudIcon})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "25%",
+              backgroundPositionX: "90%",
+              backgroundPositionY: "10%",
+            }}
+          >
+            <h1>{currentWeather?.temperature}&deg;C</h1>
+          </div>
+
+          <div
+            className="uv-index"
+            style={{
+              backgroundImage: `url(${UVIcon})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "80%",
+              backgroundPositionX: "90px",
+              backgroundPositionY: "40px",
+            }}
+          >
+            <p>UV Index</p>
+            <h1>{currentWeather?.uvIndex}</h1>
+          </div>
+
+          <div className="today-detail">
+            <div
+              className="sun-rise"
+              style={{
+                backgroundImage: `url(${SunRise})`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "90%",
+                backgroundPositionX: "-100%",
+                backgroundPositionY: "108%",
+              }}
+            >
+              <h3>Sun Rise</h3>
+              <h2>{currentWeather?.observationTime}</h2>
+            </div>
+            <div className="timed-temp">
+              <h2>Hourly Temperature</h2>
+              <div className="chart-box">
+                <LineChart city={city} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

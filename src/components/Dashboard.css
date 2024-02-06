@@ -1,0 +1,287 @@
+body {
+  font-family: "Barlow", sans-serif;
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: 1ch;
+}
+
+.dashboard {
+  display: grid;
+  gap: 2.5ch;
+  background-color: #f3f3f3;
+  opacity: 1;
+  margin-top: 10vh;
+  padding: 2ch;
+  border-radius: 2ch;
+
+  &>* {
+    background: var(--bg, #eee);
+    border-radius: 2ch;
+    color: hsl(215, 75%, 10%);
+    container-type: inline-size;
+    grid-column: var(--gc, auto);
+    grid-row: var(--gr, auto);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2ch;
+    animation: slide-in-bck-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+    & h2 {
+      font-size: 35px;
+      color: #f3f3f3;
+    }
+
+    & table {
+      color: #f3f3f3;
+      width: 100%;
+      font-size: 24px;
+      margin-top: 15%;
+
+      & td {
+        width: 33%;
+        padding-block: 13px;
+        text-align: center;
+      }
+
+      & tr {
+        margin-top: 20px;
+      }
+    }
+
+  }
+}
+
+/* Animations */
+
+@keyframes slide-in-bck-center {
+  0% {
+    transform: translateZ(800px);
+    opacity: 0;
+    filter: blur(30px);
+  }
+
+  100% {
+    transform: translateZ(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* Items */
+.today-detail {
+  animation-delay: 0.7s;
+  --bg: #cfcfcf;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  padding: 0;
+
+  &>* {
+    background: var(--bg, #eee);
+    border-radius: 2ch;
+    color: hsl(215, 75%, 10%);
+    container-type: inline-size;
+    grid-column: var(--gc, auto);
+    grid-row: var(--gr, auto);
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.sun-rise {
+  height: 100%;
+  --gc: span 2;
+  background-color: #cfcfcf;
+
+  & h2 {
+    margin-top: 0;
+    color: #f3f3f3;
+    font-size: 50px;
+    font-weight: 102000;
+  }
+
+  & h3 {
+    text-align: left;
+    margin-top: 5%;
+    margin-left: 5%;
+    color: #f3f3f3;
+    font-size: 25px;
+    font-weight: 100;
+  }
+}
+
+.timed-temp {
+  height: 100%;
+  left: -10%;
+  --gc: span 5;
+  background-color: rgba(235, 235, 235, 0.5);
+
+  & h2 {
+    text-align: left;
+    margin-top: 2%;
+    margin-left: 3%;
+    margin-bottom: 0;
+    font-size: 26px;
+    font-weight: lighter;
+  }
+}
+
+.forecast {
+  animation-delay: 0.7s;
+  --bg: #cfcfcf;
+  align-items: center;
+  align-content: center;
+}
+
+.uv-index {
+  animation-delay: 0.5s;
+  --bg: #cfcfcf;
+
+  & h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 60px;
+    font-weight: 600;
+    color: #f3f3f3;
+  }
+
+  & p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: lighter;
+    font-size: 25px;
+    text-align: left;
+    color: #f3f3f3;
+  }
+}
+
+.wind-speed {
+  text-align: left;
+  animation-delay: 0.7s;
+  --bg: #cfcfcf;
+
+  & h2 {
+    margin-top: 0;
+    margin-bottom: 5%;
+  }
+
+  & p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: lighter;
+    font-size: 20px;
+    text-align: left;
+    color: #f3f3f3;
+  }
+}
+
+.today-temp {
+  overflow: hidden;
+  animation-delay: 0.3s;
+  --bg: #cfcfcf;
+
+  & h1 {
+    margin-top: 10%;
+    padding: 5px;
+    font-size: 200px;
+    font-weight: 480;
+    color: #f3f3f3;
+  }
+}
+
+.humidity {
+  animation-delay: 0.7s;
+  --bg: #cfcfcf;
+  overflow: hidden;
+
+  & h1 {
+    margin-top: 15%;
+    font-size: 75px;
+    font-weight: 500;
+    color: #f3f3f3;
+  }
+}
+
+.chart-box {
+  margin-top: 10px;
+  margin-left: 25px;
+  align-items: center;
+  align-self: center;
+  width: 85%;
+}
+
+
+.title-card {
+  animation-delay: 0.5s;
+  --bg: #cfcfcf;
+
+  & h1 {
+    margin-top: 5%;
+    margin-bottom: 0;
+    font-size: 95px;
+    font-weight: 500;
+    color: #f3f3f3;
+  }
+
+  & p {
+    font-size: 25px;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #f3f3f3;
+  }
+}
+
+.model {
+  background-color: #cfcfcf34;
+  backdrop-filter: blur(10px);
+}
+
+@media (min-width: 768px) {
+  .dashboard {
+    grid-template-columns: repeat(9, 1fr);
+  }
+
+  .today-detail {
+    aspect-ratio: 36/14;
+    --gc: span 6;
+    --gr: span 6;
+  }
+
+  .forecast {
+    aspect-ratio: 15/28;
+    --gc: span 3;
+    --gr: span 12;
+  }
+
+  .uv-index {
+    --gc: span 2;
+    --gr: span 3;
+  }
+
+  .wind-speed {
+    aspect-ratio: 1/1.8;
+    --gc: span 2;
+    --gr: span 7;
+  }
+
+  .today-temp {
+    aspect-ratio: 23/16;
+    --gc: span 4;
+    --gr: span 6;
+  }
+
+  .humidity {
+    aspect-ratio: 1;
+    --gc: span 2;
+    --gr: span 4;
+  }
+
+  .title-card {
+    --gc: span 5;
+    --gr: span 4;
+  }
+}
